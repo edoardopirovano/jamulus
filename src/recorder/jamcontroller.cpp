@@ -94,7 +94,7 @@ void CJamController::SetRecordingDir ( QString newRecordingDir,
     {
         pJamRecorder = new recorder::CJamRecorder ( newRecordingDir, iServerFrameSizeSamples );
         strRecorderErrMsg = pJamRecorder->Init();
-        bRecorderInitialised = ( strRecorderErrMsg == QString::null );
+        bRecorderInitialised = ( strRecorderErrMsg == QString() );
         bEnableRecording = bRecorderInitialised && !bDisableRecording;
 
 #if QT_VERSION >= QT_VERSION_CHECK(5, 5, 0)
@@ -105,7 +105,7 @@ void CJamController::SetRecordingDir ( QString newRecordingDir,
     else
     {
         // This is the only time this is ever true - UI needs to handle it
-        strRecorderErrMsg = QString::null;
+        strRecorderErrMsg = QString();
         bRecorderInitialised = false;
         bEnableRecording = false;
 

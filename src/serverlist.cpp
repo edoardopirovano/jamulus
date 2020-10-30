@@ -108,7 +108,7 @@ CServerListManager::CServerListManager ( const quint16  iNPortNum,
             if ( CurWhiteListAddress.setAddress ( slWhitelistAddresses.at ( iIdx ) ) )
             {
                 vWhiteList << CurWhiteListAddress;
-                tsConsoleStream << "Whitelist entry added: " << CurWhiteListAddress.toString() << endl;
+                tsConsoleStream << "Whitelist entry added: " << CurWhiteListAddress.toString() << Qt::endl;
             }
         }
     }
@@ -284,7 +284,7 @@ void CServerListManager::OnTimerPollList()
 
     foreach ( const CHostAddress HostAddr, vecRemovedHostAddr )
     {
-        tsConsoleStream << "Expired entry for " << HostAddr.toString() << endl;
+        tsConsoleStream << "Expired entry for " << HostAddr.toString() << Qt::endl;
     }
 }
 
@@ -306,7 +306,7 @@ void CServerListManager::CentralServerRegisterServer ( const CHostAddress&    In
     {
         tsConsoleStream << "Requested to register entry for "
                         << InetAddr.toString() << " (" << LInetAddr.toString() << ")"
-                        << ": " << ServerInfo.strName << endl;
+                        << ": " << ServerInfo.strName << Qt::endl;
 
         // check for whitelist (it is enabled if it is not empty per definition)
         if ( !vWhiteList.empty() )
@@ -376,7 +376,7 @@ void CServerListManager::CentralServerUnregisterServer ( const CHostAddress& Ine
     if ( bIsCentralServer && bEnabled )
     {
         tsConsoleStream << "Requested to unregister entry for "
-                        << InetAddr.toString() << endl;
+                        << InetAddr.toString() << Qt::endl;
 
         QMutexLocker locker ( &Mutex );
 
@@ -573,7 +573,7 @@ void CServerListManager::SlaveServerRegisterServer ( const bool bIsRegister )
 void CServerListManager::SetSvrRegStatus ( ESvrRegStatus eNSvrRegStatus )
 {
     // output regirstation result/update on the console
-    tsConsoleStream << "Server Registration Status update: " << svrRegStatusToString ( eNSvrRegStatus ) << endl;
+    tsConsoleStream << "Server Registration Status update: " << svrRegStatusToString ( eNSvrRegStatus ) << Qt::endl;
 
     // store the state and inform the GUI about the new status
     eSvrRegStatus = eNSvrRegStatus;

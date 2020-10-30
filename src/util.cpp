@@ -1532,7 +1532,7 @@ void DebugError ( const QString& pchErDescr,
             pchPar1Descr << ": " << QString().setNum ( dPar1, 'f', 2 ) <<
             " ### " <<
             pchPar2Descr << ": " << QString().setNum ( dPar2, 'f', 2 ) <<
-            endl;
+            Qt::endl;
 
         File.close();
     }

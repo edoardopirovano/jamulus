@@ -321,7 +321,7 @@ lvwClients->setMinimumHeight ( 140 );
     edtRecordingDir->setText ( pServer->GetRecordingDir() );
     tbtClearRecordingDir->setText ( u8"\u232B" );
 
-    UpdateRecorderStatus ( QString::null );
+    UpdateRecorderStatus ( QString() );
 
     // language combo box (corrects the setting if language not found)
     cbxLanguage->Init ( pSettings->strLanguage );
@@ -563,18 +563,18 @@ void CServerDlg::OnCentServAddrTypeActivated ( int iTypeIdx )
 void CServerDlg::OnServerStarted()
 {
     UpdateSystemTrayIcon ( true );
-    UpdateRecorderStatus ( QString::null );
+    UpdateRecorderStatus ( QString() );
 }
 
 void CServerDlg::OnServerStopped()
 {
     UpdateSystemTrayIcon ( false );
-    UpdateRecorderStatus ( QString::null );
+    UpdateRecorderStatus ( QString() );
 }
 
 void CServerDlg::OnStopRecorder()
 {
-    UpdateRecorderStatus ( QString::null );
+    UpdateRecorderStatus ( QString() );
 }
 
 void CServerDlg::OnRecordingDirClicked()
@@ -589,16 +589,16 @@ void CServerDlg::OnRecordingDirClicked()
     if ( newRecordingDir != currentValue )
     {
         pServer->SetRecordingDir ( newRecordingDir );
-        UpdateRecorderStatus ( QString::null );
+        UpdateRecorderStatus ( QString() );
     }
 }
 
 void CServerDlg::OnClearRecordingDirClicked()
 {
-    if ( pServer->GetRecorderErrMsg() != QString::null || pServer->GetRecordingDir() != "" )
+    if ( pServer->GetRecorderErrMsg() != QString() || pServer->GetRecordingDir() != "" )
     {
         pServer->SetRecordingDir ( "" );
-        UpdateRecorderStatus ( QString::null );
+        UpdateRecorderStatus ( QString() );
     }
 }
 
@@ -775,7 +775,7 @@ void CServerDlg::UpdateRecorderStatus ( QString sessionDir )
         {
             if ( pServer->IsRunning() )
             {
-                edtCurrentSessionDir->setText ( sessionDir != QString::null ? sessionDir : "" );
+                edtCurrentSessionDir->setText ( sessionDir != QString() ? sessionDir : "" );
 
                 strRecorderStatus = SREC_RECORDING;
                 bIsRecording      = true;
@@ -794,7 +794,7 @@ void CServerDlg::UpdateRecorderStatus ( QString sessionDir )
     {
         strRecordingDir = pServer->GetRecorderErrMsg();
 
-        if ( strRecordingDir == QString::null )
+        if ( strRecordingDir == QString() )
         {
             strRecordingDir = pServer->GetRecordingDir();
         }

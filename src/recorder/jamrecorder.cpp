@@ -302,11 +302,11 @@ QMap<QString, QList<STrackItem>> CJamSession::TracksFromSessionDir(const QString
 /**
  * @brief CJamRecorder::Init Create recording directory, if necessary, and connect signal handlers
  * @param server Server object emitting signals
- * @return QString::null on success else the failure reason
+ * @return QString() (previously QString::null) on success else the failure reason
  */
 QString CJamRecorder::Init()
 {
-    QString errmsg = QString::null;
+    QString errmsg = QString();
     QFileInfo fi ( recordBaseDir.absolutePath() );
     fi.setCaching ( false );
 
@@ -420,7 +420,7 @@ void CJamRecorder::ReaperProjectFromCurrentSession()
         if ( outf.open(QFile::WriteOnly) )
         {
             QTextStream out(&outf);
-            out << CReaperProject( currentSession->Tracks(), iServerFrameSizeSamples ).toString() << endl;
+            out << CReaperProject( currentSession->Tracks(), iServerFrameSizeSamples ).toString() << Qt::endl;
             qDebug() << "Session RPP:" << reaperProjectFileName;
         }
         else
@@ -451,7 +451,7 @@ void CJamRecorder::AudacityLofFromCurrentSession()
                 foreach ( auto item, currentSession->Tracks()[trackName] ) {
                     QFileInfo fi ( item.fileName );
                     sOut << "file " << '"' << fi.fileName() << '"';
-                    sOut << " offset " << secondsAt48K( item.startFrame, iServerFrameSizeSamples ) << endl;
+                    sOut << " offset " << secondsAt48K( item.startFrame, iServerFrameSizeSamples ) << Qt::endl;
                 }
             }
 
@@ -491,7 +491,7 @@ void CJamRecorder::SessionDirToReaper(QString& strSessionDirName, int serverFram
     }
     QTextStream out(&outf);
 
-    out << CReaperProject( CJamSession::TracksFromSessionDir( fiSessionDir.absoluteFilePath(), serverFrameSizeSamples ), serverFrameSizeSamples ).toString() << endl;
+    out << CReaperProject( CJamSession::TracksFromSessionDir( fiSessionDir.absoluteFilePath(), serverFrameSizeSamples ), serverFrameSizeSamples ).toString() << Qt::endl;
 
     qDebug() << "Session RPP:" << reaperProjectFileName;
 }

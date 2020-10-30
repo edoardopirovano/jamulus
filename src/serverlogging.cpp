@@ -53,7 +53,7 @@ void CServerLogging::AddNewConnection ( const QHostAddress& ClientInetAddr,
         ClientInetAddr.toString() + ", connected (" + QString::number ( iNumberOfConnectedClients ) + ")";
 
     QTextStream& tsConsoleStream = *( ( new ConsoleWriterFactory() )->get() );
-    tsConsoleStream << strLogStr << endl; // on console
+    tsConsoleStream << strLogStr << Qt::endl; // on console
     *this << strLogStr; // in log file
 }
 
@@ -63,7 +63,7 @@ void CServerLogging::AddServerStopped()
         "-------------------------------------";
 
     QTextStream& tsConsoleStream = *( ( new ConsoleWriterFactory() )->get() );
-    tsConsoleStream << strLogStr << endl; // on console
+    tsConsoleStream << strLogStr << Qt::endl; // on console
     *this << strLogStr; // in log file
 }
 
@@ -73,7 +73,7 @@ void CServerLogging::operator<< ( const QString& sNewStr )
     {
         // append new line in logging file
         QTextStream out ( &File );
-        out << sNewStr << endl;
+        out << sNewStr << Qt::endl;
         File.flush();
     }
 }
