@@ -16,4 +16,5 @@ source "$(dirname "${BASH_SOURCE[0]}")/../../ensure_THIS_JAMULUS_PROJECT_PATH.sh
 cd "${THIS_JAMULUS_PROJECT_PATH}"
 
 echo "Run deploy script..."
-sh -x "${THIS_JAMULUS_PROJECT_PATH}"/mac/deploy_mac.sh
+sh -x "${THIS_JAMULUS_PROJECT_PATH}"/mac/deploy_mac.sh 2>&1
+echo "Finished deploy script..."

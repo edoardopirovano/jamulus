@@ -50,12 +50,18 @@ build_installer_image()
     # Get Jamulus version
     local app_version="$(cat "${project_path}" | sed -nE 's/^VERSION *= *(.*)$/\1/p')"
 
+    echo ============================================================================================
     ls -lRA ${deploy_path}
+    echo ============================================================================================
+
+    env
+    echo ============================================================================================
 
     # Build installer image
     "${dmgbuild_bin}" -s "${macdeploy_path}/deployment_settings.py" -D background="${resources_path}/installerbackground.png" \
         -D app_path="${deploy_path}/$1.app" -D server_path="${deploy_path}/$2.app" \
         -D license="${root_path}/COPYING" "$1 Installer" "${deploy_path}/$1-${app_version}-installer-mac.dmg"
+    echo ============================================================================================
 }
 
 
