@@ -50,6 +50,8 @@ build_installer_image()
     # Get Jamulus version
     local app_version="$(cat "${project_path}" | sed -nE 's/^VERSION *= *(.*)$/\1/p')"
 
+    ls -lRA ${deploy_path}
+
     # Build installer image
     "${dmgbuild_bin}" -s "${macdeploy_path}/deployment_settings.py" -D background="${resources_path}/installerbackground.png" \
         -D app_path="${deploy_path}/$1.app" -D server_path="${deploy_path}/$2.app" \
