@@ -108,13 +108,13 @@ jobs:
 #             cmd3_postbuild:        "./autobuild/linux/autobuild_deb_3_copy_files.sh"
 #             uses_codeql:           true
 
-#           - config_name:           MacOS (codeQL)
-#             target_os:             macos
-#             building_on_os:        macos-10.15
-#             cmd1_prebuild:         "./autobuild/mac/codeQL/autobuild_mac_1_prepare.sh"
-#             cmd2_build:            "./autobuild/mac/codeQL/autobuild_mac_2_build.sh"
-#             cmd3_postbuild:        false
-#             uses_codeql:           true
+           - config_name:           MacOS (codeQL)
+             target_os:             macos
+             building_on_os:        macos-10.15
+             cmd1_prebuild:         "./autobuild/mac/codeQL/autobuild_mac_1_prepare.sh"
+             cmd2_build:            "./autobuild/mac/codeQL/autobuild_mac_2_build.sh"
+             cmd3_postbuild:        false
+             uses_codeql:           true
 
 #          - config_name:           MacOS (artifacts)
            - config_name:           MacOS (artifacts-without-CodeQL)
@@ -128,14 +128,14 @@ jobs:
 
 #          - config_name:           MacOS (artifacts)
 #          - config_name:           MacOS (artifacts-without-CodeQL)
-           - config_name:           MacOS (artifacts+CodeQL)
-             target_os:             macos
-             building_on_os:        macos-10.15
-             cmd1_prebuild:         "sh ./autobuild/mac/artifacts/autobuild_mac_1_prepare.sh" # this step needs sh instead of bash for permissions
-             cmd2_build:            "./autobuild/mac/artifacts/autobuild_mac_2_build.sh"
-             cmd3_postbuild:        "./autobuild/mac/artifacts/autobuild_mac_3_copy_files.sh"
+#           - config_name:           MacOS (artifacts+CodeQL)
+#             target_os:             macos
+#             building_on_os:        macos-10.15
+#             cmd1_prebuild:         "sh ./autobuild/mac/artifacts/autobuild_mac_1_prepare.sh" # this step needs sh instead of bash for permissions
+#             cmd2_build:            "./autobuild/mac/artifacts/autobuild_mac_2_build.sh"
+#             cmd3_postbuild:        "./autobuild/mac/artifacts/autobuild_mac_3_copy_files.sh"
 #             uses_codeql:           false
-             uses_codeql:           true
+#             uses_codeql:           true
 
 #           - config_name:           Windows (artifact+codeQL)
 #             target_os:             windows
