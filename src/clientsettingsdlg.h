@@ -117,8 +117,10 @@ public slots:
     void OnCountryActivated ( int iCntryListItem );
     void OnCityTextChanged ( const QString& strNewName );
     void OnSkillActivated ( int iCntryListItem );
+#if 0
     void OnTabChanged();
     void OnMakeTabChange ( int iTabIdx );
+#endif
     void OnAudioPanValueChanged ( int value );
 
 signals:

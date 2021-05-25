@@ -627,10 +627,12 @@ CClientSettingsDlg::CClientSettingsDlg ( CClient*         pNCliP,
     QObject::connect ( pcbxSkill, static_cast<void (QComboBox::*) ( int )> ( &QComboBox::activated ),
         this, &CClientSettingsDlg::OnSkillActivated );
 
+#if 0
     QObject::connect ( tabSettings, &QTabWidget::currentChanged,
         this, &CClientSettingsDlg::OnTabChanged );
 
     tabSettings->setCurrentIndex(iTabIdx);
+#endif
 
     // Timers ------------------------------------------------------------------
     // start timer for status bar
@@ -1056,6 +1058,7 @@ void CClientSettingsDlg::OnSkillActivated ( int iCntryListItem )
     pClient->SetRemoteInfo();
 }
 
+#if 0
 void CClientSettingsDlg::OnMakeTabChange ( int iTab )
 {
     tabSettings->setCurrentIndex ( iTab );
@@ -1067,6 +1070,7 @@ void CClientSettingsDlg::OnTabChanged ( void )
 {
     iTabIdx = tabSettings->currentIndex();
 }
+#endif
 
 void CClientSettingsDlg::UpdateAudioFaderSlider()
 {

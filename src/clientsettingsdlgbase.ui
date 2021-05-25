@@ -22,14 +22,8 @@
   </property>
   <layout class="QHBoxLayout" name="horizontalLayout_7">
    <item>
-    <widget class="QTabWidget" name="tabSettings">
-     <property name="currentIndex">
-      <number>1</number>
-     </property>
-     <widget class="QWidget" name="tab_0_profile">
-      <attribute name="title">
-       <string>My Profile</string>
-      </attribute>
+    <layout class="QHBoxLayout" name="templayout">
+     <item>
       <layout class="QHBoxLayout" name="horizontalLayout_11">
        <item>
         <layout class="QHBoxLayout" name="horizontalLayout_10">
@@ -268,11 +262,8 @@
         </layout>
        </item>
       </layout>
-     </widget>
-     <widget class="QWidget" name="tab_1_Basic">
-      <attribute name="title">
-       <string>Basic Setup</string>
-      </attribute>
+     </item>
+     <item>
       <layout class="QHBoxLayout" name="horizontalLayout_6">
        <item>
         <layout class="QHBoxLayout" name="horizontalLayout_5">
@@ -958,11 +949,8 @@
         </layout>
        </item>
       </layout>
-     </widget>
-     <widget class="QWidget" name="tab_2_advanced">
-      <attribute name="title">
-       <string>Advanced Setup</string>
-      </attribute>
+     </item>
+     <item>
       <layout class="QVBoxLayout" name="verticalLayout_6">
        <item>
         <layout class="QHBoxLayout" name="horizontalLayout_8">
@@ -1209,8 +1197,8 @@
         </layout>
        </item>
       </layout>
-     </widget>
-    </widget>
+     </item>
+    </layout>
    </item>
   </layout>
  </widget>

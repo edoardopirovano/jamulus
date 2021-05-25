@@ -486,8 +486,10 @@ CClientDlg::CClientDlg ( CClient*         pNCliP,
     QObject::connect ( &ClientSettingsDlg, &CClientSettingsDlg::CustomCentralServerAddrChanged,
         &ConnectDlg, &CConnectDlg::OnCustomCentralServerAddrChanged );
 
+#if 0
     QObject::connect ( this, &CClientDlg::SendTabChange,
         &ClientSettingsDlg, &CClientSettingsDlg::OnMakeTabChange );
+#endif
 
     QObject::connect ( MainMixerBoard, &CAudioMixerBoard::ChangeChanGain,
         this, &CClientDlg::OnChangeChanGain );
