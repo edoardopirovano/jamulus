@@ -121,7 +121,7 @@ jobs:
              building_on_os:        macos-10.15
              cmd1_prebuild:         "./autobuild/mac/artifacts/autobuild_mac_1_prepare.sh 5.9.9"
              cmd2_build:            "./autobuild/mac/artifacts/autobuild_mac_2_build.sh"
-             cmd3_postbuild:        "./autobuild/mac/artifacts/autobuild_mac_3_copy_files.sh -qt59"
+             cmd3_postbuild:        "./autobuild/mac/artifacts/autobuild_mac_3_copy_files.sh qt59"
              uses_codeql:           false
 
            - config_name:           MacOS (artifacts for Qt 5.12.10)
@@ -129,7 +129,7 @@ jobs:
              building_on_os:        macos-10.15
              cmd1_prebuild:         "./autobuild/mac/artifacts/autobuild_mac_1_prepare.sh 5.12.10"
              cmd2_build:            "./autobuild/mac/artifacts/autobuild_mac_2_build.sh"
-             cmd3_postbuild:        "./autobuild/mac/artifacts/autobuild_mac_3_copy_files.sh -qt512"
+             cmd3_postbuild:        "./autobuild/mac/artifacts/autobuild_mac_3_copy_files.sh qt512"
              uses_codeql:           false
 
            - config_name:           MacOS (artifacts for Qt 5.15.2)
@@ -137,7 +137,7 @@ jobs:
              building_on_os:        macos-10.15
              cmd1_prebuild:         "./autobuild/mac/artifacts/autobuild_mac_1_prepare.sh 5.15.2"
              cmd2_build:            "./autobuild/mac/artifacts/autobuild_mac_2_build.sh"
-             cmd3_postbuild:        "./autobuild/mac/artifacts/autobuild_mac_3_copy_files.sh"
+             cmd3_postbuild:        "./autobuild/mac/artifacts/autobuild_mac_3_copy_files.sh qt515"
              uses_codeql:           false
 
 #           - config_name:           Windows (artifact+codeQL)

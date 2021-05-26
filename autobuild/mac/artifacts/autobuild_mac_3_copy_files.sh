@@ -2,7 +2,10 @@
 
 # autobuild_3_copy_files: copy the built files to deploy folder
 
-BUILD_SUFFIX=$1
+case $# in
+    0) BUILD_SUFFIX="" ;;
+    *) BUILD_SUFFIX=_$1 ; shift ;;
+esac
 
 ####################
 ###  PARAMETERS  ###
