@@ -120,6 +120,11 @@ jobs:
         with:
           languages: "cpp"
 
+      - name: Dump env
+        env:
+          GITHUB_CONTEXT: ${{ toJSON(env) }}
+        run: echo "$GITHUB_CONTEXT"
+
       # Build
       - name: "Build for ${{ matrix.config.config_name }}"
         id: step_macos_build
