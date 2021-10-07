@@ -33,4 +33,4 @@ echo "${VERSION} building..."
 
 sed -i "s/é&%JAMVERSION%&è/${VERSION}/g" debian/control
 
-debuild --preserve-env -b -us -uc
+debuild -b -us -uc
