@@ -11,6 +11,8 @@ cd ..
 # get the jamulus version from pro file
 VERSION=$(cat Jamulus.pro | grep -oP 'VERSION = \K\w[^\s\\]*')
 
+echo "LD PRELOAD: $LD_PRELOAD"
+
 # patch changelog (with hack)
 
 DATE=$(date "+%a, %d %b %Y %T" )
@@ -31,4 +33,4 @@ echo "${VERSION} building..."
 
 sed -i "s/é&%JAMVERSION%&è/${VERSION}/g" debian/control
 
-debuild -b -us -uc
+debuild --preserve-env -b -us -uc
