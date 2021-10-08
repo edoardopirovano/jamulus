@@ -116,7 +116,7 @@ jobs:
       # Initialize CodeQL tools for code-scanning for security
       - name: Initialize CodeQL
         if: matrix.config.uses_codeql
-        uses: github/codeql-action/init@v1.0.15
+        uses: github/codeql-action/init@v1.0.16
         with:
           languages: "cpp"
 
@@ -148,17 +148,37 @@ jobs:
           jamulus_buildversionstring: ${{ needs.create_release.outputs.version_name }}
 
       # Upload tracer logs
-      - name: Upload Tracer logs
+      - name: Upload Tracer logs (old)
         uses: actions/upload-artifact@v2
         with:
-          name: tracer-logs
+          name: tracer-logs-old
           path: /home/runner/work/_temp/compound-build-tracer.log
           retention-days: 31
-          if-no-files-found: error # 'warn' or 'ignore' are also available, defaults to `warn`
+
+      - name: Upload Tracer logs (new)
+        uses: actions/upload-artifact@v2
+        with:
+          name: tracer-logs-new
+          path: /home/runner/work/_temp/codeql_databases/log/build-tracer.log
+          retention-days: 31
+
+      - name: Upload spec (old)
+        uses: actions/upload-artifact@v2
+        with:
+          name: spec-old
+          path: /home/runner/work/_temp/compound-spec
+          retention-days: 31
+
+      - name: Upload spec (new)
+        uses: actions/upload-artifact@v2
+        with:
+          name: spec-new
+          path: /home/runner/work/_temp/codeql_databases/working/tracing/*.spec
+          retention-days: 31
 
       # Run CodeQL tools for code-scanning for security
       - name: Perform CodeQL Analysis
         if: matrix.config.uses_codeql
-        uses: github/codeql-action/analyze@v1.0.15
+        uses: github/codeql-action/analyze@v1.0.16
         with:
           skip-queries: true
