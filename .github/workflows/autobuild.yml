@@ -116,7 +116,7 @@ jobs:
       # Initialize CodeQL tools for code-scanning for security
       - name: Initialize CodeQL
         if: matrix.config.uses_codeql
-        uses: github/codeql-action/init@edoardo/fix-tracing
+        uses: github/codeql-action/init@v1
         with:
           languages: "cpp"
 
@@ -147,27 +147,16 @@ jobs:
           jamulus_project_path: ${{ github.workspace }}
           jamulus_buildversionstring: ${{ needs.create_release.outputs.version_name }}
 
-      # Upload Artifact to Job
-      - name: Upload Artifact 1 to Job
-        if: ${{ steps.step_cmd3_postbuild.outputs.artifact_1 }}
+      # Upload tracer logs
+      - name: Upload Tracer logs
         uses: actions/upload-artifact@v2
         with:
-          name: ${{ steps.step_cmd3_postbuild.outputs.artifact_1 }}
-          path: deploy/${{ steps.step_cmd3_postbuild.outputs.artifact_1 }}
-          retention-days: 31
-          if-no-files-found: error # 'warn' or 'ignore' are also available, defaults to `warn`
-
-      # Upload Artifact to Job
-      - name: Upload Artifact 2 to Job
-        if: ${{ steps.step_cmd3_postbuild.outputs.artifact_2 }}
-        uses: actions/upload-artifact@v2
-        with:
-          name: ${{ steps.step_cmd3_postbuild.outputs.artifact_2 }}
-          path: deploy/${{ steps.step_cmd3_postbuild.outputs.artifact_2 }}
+          name: tracer-logs
+          path: /home/runner/work/_temp/codeql_databases/log/build-tracer.log
           retention-days: 31
           if-no-files-found: error # 'warn' or 'ignore' are also available, defaults to `warn`
 
       # Run CodeQL tools for code-scanning for security
       - name: Perform CodeQL Analysis
         if: matrix.config.uses_codeql
-        uses: github/codeql-action/analyze@edoardo/fix-tracing
+        uses: github/codeql-action/analyze@v1
